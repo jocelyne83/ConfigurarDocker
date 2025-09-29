@@ -1,3 +1,6 @@
+import { generateName, availableRaces, availableClasses } from '..lib/namegenerator';
+
+
 describe('generateName', () => {
   test('debe generar un nombre con prefijo de la raza y sufijo de la clase', () => {
     const race = 'Human';
