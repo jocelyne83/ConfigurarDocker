@@ -13,7 +13,14 @@ const classSuffixes = {
     'Battleborn',
     'the Relentless'
   ],
-  Mage: ['Fireweaver', 'Arclight', 'the Spellbound', 'the Mystic', 'Stormbringer', 'Voidwalker'],
+  Mage: [
+    'Fireweaver',
+    'Arclight',
+    'the Spellbound',
+    'the Mystic',
+    'Stormbringer',
+    'Voidwalker'
+  ],
   Rogue: [
     'of the Shadows',
     'Whispercloak',
@@ -24,17 +31,14 @@ const classSuffixes = {
   ]
 };
 
-function generateName(race, charClass) {
+export function generateName(race, charClass) {
   if (!racePrefixes[race]) throw new Error(`Raza inválida: ${race}`);
   if (!classSuffixes[charClass]) throw new Error(`Clase inválida: ${charClass}`);
-
   const prefix = racePrefixes[race][Math.floor(Math.random() * racePrefixes[race].length)];
   const suffix =
     classSuffixes[charClass][Math.floor(Math.random() * classSuffixes[charClass].length)];
   return `${prefix} ${suffix}`;
 }
 
-const availableRaces = Object.keys(racePrefixes);
-const availableClasses = Object.keys(classSuffixes);
-
-module.exports = { generateName, availableRaces, availableClasses };
+export const availableRaces = Object.keys(racePrefixes);
+export const availableClasses = Object.keys(classSuffixes);

@@ -1,4 +1,3 @@
-module.exports = {
-  testEnvironment: "node",
-  transform: {}
+export default {
+  testEnvironment: 'node',
 };
