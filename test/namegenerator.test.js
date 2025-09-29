@@ -1,12 +1,12 @@
 const { generateName } = require('../src/lib/nameGenerator');
 
-describe('Pruebas de generateName con mocks', () => {
+describe('Pruebas de generateName', () => {
   beforeEach(() => {
     jest.restoreAllMocks();
   });
 
   test('Debe generar siempre "Jon the Strong" para Human Warrior', () => {
-    jest.spyOn(Math, 'random').mockReturnValue(0); // fuerza primer índice
+    jest.spyOn(Math, 'random').mockReturnValue(0); 
     const name = generateName('Human', 'Warrior');
     expect(name).toBe('Jon the Strong');
   });
