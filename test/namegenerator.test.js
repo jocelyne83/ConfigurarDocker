@@ -1,37 +1,33 @@
-import { generateName, availableRaces, availableClasses } from '..lib/namegenerator';
+const { generateName } = require('../src/lib/nameGenerator');
 
-
-describe('generateName', () => {
-  test('debe generar un nombre con prefijo de la raza y sufijo de la clase', () => {
-    const race = 'Human';
-    const charClass = 'Warrior';
-    const name = generateName(race, charClass);
-
-    // Verificar que el nombre comienza con un prefijo válido
-    const prefixes = ['Jon', 'Ari', 'Mar', 'Cal', 'Eli', 'Dar', 'Sam', 'Tom', 'Nia', 'Leo'];
-    const suffixes = [
-      'the Strong',
-      'Shieldbearer',
-      'of the Blade',
-      'Ironfist',
-      'Battleborn',
-      'the Relentless'
-    ];
-
-    const [prefix, ...rest] = name.split(' ');
-    const suffix = rest.join(' ');
-
-    expect(prefixes).toContain(prefix);
-    expect(suffixes).toContain(suffix);
+describe('Pruebas de generateName con mocks', () => {
+  beforeEach(() => {
+    jest.restoreAllMocks();
   });
 
-  test('should generate names only from available races and classes', () => {
-    for (const race of availableRaces) {
-      for (const charClass of availableClasses) {
-        const name = generateName(race, charClass);
-        expect(name).toBeTruthy();
-        expect(typeof name).toBe('string');
-      }
-    }
+  test('Debe generar siempre "Jon the Strong" para Human Warrior', () => {
+    jest.spyOn(Math, 'random').mockReturnValue(0); // fuerza primer índice
+    const name = generateName('Human', 'Warrior');
+    expect(name).toBe('Jon the Strong');
+  });
+
+  test('Debe generar siempre "Ela Fireweaver" para Elf Mage', () => {
+    jest.spyOn(Math, 'random').mockReturnValue(0);
+    const name = generateName('Elf', 'Mage');
+    expect(name).toBe('Ela Fireweaver');
+  });
+
+  test('Debe generar siempre "Bor of the Shadows" para Dwarf Rogue', () => {
+    jest.spyOn(Math, 'random').mockReturnValue(0);
+    const name = generateName('Dwarf', 'Rogue');
+    expect(name).toBe('Bor of the Shadows');
+  });
+
+  test('Debe lanzar error con raza inválida', () => {
+    expect(() => generateName('Orc', 'Mage')).toThrow('Raza inválida');
+  });
+
+  test('Debe lanzar error con clase inválida', () => {
+    expect(() => generateName('Human', 'Paladin')).toThrow('Clase inválida');
   });
 });

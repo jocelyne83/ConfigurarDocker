@@ -24,12 +24,17 @@ const classSuffixes = {
   ]
 };
 
-export function generateName(race, charClass) {
+function generateName(race, charClass) {
+  if (!racePrefixes[race]) throw new Error(`Raza inválida: ${race}`);
+  if (!classSuffixes[charClass]) throw new Error(`Clase inválida: ${charClass}`);
+
   const prefix = racePrefixes[race][Math.floor(Math.random() * racePrefixes[race].length)];
   const suffix =
     classSuffixes[charClass][Math.floor(Math.random() * classSuffixes[charClass].length)];
   return `${prefix} ${suffix}`;
 }
 
-export const availableRaces = Object.keys(racePrefixes);
-export const availableClasses = Object.keys(classSuffixes);
+const availableRaces = Object.keys(racePrefixes);
+const availableClasses = Object.keys(classSuffixes);
+
+module.exports = { generateName, availableRaces, availableClasses };
