@@ -13,15 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Instalar dependencias
       - name: Install dependencies
         run: npm install
 
-      # Ejecutar pruebas con Jest
       - name: Run tests
         run: npm test
 
-      # Extraer metadata de Docker
       - name: Extract Docker image metadata
         id: meta
         uses: docker/metadata-action@v5
