@@ -14,6 +14,7 @@ describe('generateName', () => {
     });
   });
 
+  //pruebas exitosa 
   test('debe lanzar un error si la raza no es válida', () => {
     expect(() => generateName('Orc', 'Warrior')).toThrow('Raza inválida: Orc');
   });
