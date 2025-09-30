@@ -1,5 +1,5 @@
 import { generateName, availableRaces, availableClasses } from '../src/lib/nameGenerator.js';
-
+//generador exitoso
 describe('generateName', () => {
   test('debe generar un nombre válido para cada raza y clase', () => {
     availableRaces.forEach((race) => {
