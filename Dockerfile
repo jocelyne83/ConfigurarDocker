@@ -15,5 +15,5 @@ RUN --mount=type=cache,target=/root/.npm \
 FROM node:lts-alpine AS release
 WORKDIR /app
 COPY --from=builder /src/build .
-EXPOSE 3000
+EXPOSE 5173
 CMD ["node", "."]
