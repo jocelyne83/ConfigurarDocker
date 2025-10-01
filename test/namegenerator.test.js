@@ -8,7 +8,7 @@ describe('generateName', () => {
         expect(typeof name).toBe('string');
         expect(name.length).toBeGreaterThan(0);
 
-        // Debe contener un espacio (prefijo + sufijo)
+        
         expect(name).toMatch(/\s/);
       });
     });
