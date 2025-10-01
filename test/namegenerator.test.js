@@ -1,5 +1,5 @@
 import { generateName, availableRaces, availableClasses } from '../src/lib/nameGenerator.js';
-//generador exitoso
+//gruebas unitarias 
 describe('generateName', () => {
   test('debe generar un nombre válido para cada raza y clase', () => {
     availableRaces.forEach((race) => {
@@ -14,7 +14,7 @@ describe('generateName', () => {
     });
   });
 
-  //pruebas exitosa 
+  //pruebas 
   test('debe lanzar un error si la raza no es válida', () => {
     expect(() => generateName('Orc', 'Warrior')).toThrow('Raza inválida: Orc');
   });
