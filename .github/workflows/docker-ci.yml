@@ -28,6 +28,7 @@ jobs:
         with:
           images: ${{ secrets.DOCKER_HUB_USERNAME }}/configuracion_docker
 
+      # pruebas 
       
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
